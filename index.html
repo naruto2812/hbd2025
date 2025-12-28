@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Birthday Surprise 💗</title>
+    <meta name="description" content="A romantic birthday surprise with love and memories">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Comfortaa:wght@400&family=Quicksand:wght@600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== CSS Reset & Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ffe3f4 0%, #fff5ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        /* Prevent text selection on interactive elements */
+        button,
+        .gift-box,
+        .music-toggle {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== Utility Classes ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        /* ===== Page 1: Landing Page ===== */
+        #page1 {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 26px 18px 30px;
+            text-align: center;
+        }
+
+        #page1 h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff3c84;
+            margin: 0;
+        }
+
+        #page1 p {
+            font-size: 1rem;
+            max-width: 420px;
+            line-height: 1.5;
+            color: #6b4455;
+        }
+
+        #page1 button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff4b8b 0%, #ff9acb 100%);
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 10px 26px rgba(255, 75, 139, 0.45);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        #page1 button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(255, 75, 139, 0.55);
+        }
+
+        /* ===== Page 2: Gift Boxes Page ===== */
+        #page2 {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 26px 18px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        #page2 h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #ff3c84;
+            margin-bottom: 6px;
+        }
+
+        #page2 .subtext {
+            font-size: 0.98rem;
+            color: #6b4455;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Gift Boxes Container ===== */
+        .gifts-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 450px;
+            margin: 20px auto 0;
+        }
+
+        /* ===== Individual Gift Box ===== */
+        .gift-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.3) rotate(-10deg);
+            transition: transform 0.2s ease;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* Box Base */
+        .box-base {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 60%;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff9acb 100%);
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Vertical Ribbon */
+        .ribbon-v {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 100%;
+            background: #ffd700;
+            z-index: 2;
+        }
+
+        /* Horizontal Ribbon */
+        .ribbon-h {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 12px;
+            background: #ffd700;
+            z-index: 1;
+        }
+
+        /* Bow */
+        .bow {
+            position: absolute;
+            top: -5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.5);
+            z-index: 3;
+        }
+
+        .bow::before,
+        .bow::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #ffd700;
+            border-radius: 50%;
+            top: 6px;
+        }
+
+        .bow::before {
+            left: -14px;
+        }
+
+        .bow::after {
+            right: -14px;
+        }
+
+        /* Heart in bow */
+        .bow-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #ff3c84;
+            border-radius: 50%;
+        }
+
+        /* Gift Box Pop Animation */
+        @keyframes popGift {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.08) rotate(2deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .gift-box.show {
+            animation: popGift 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+        }
+
+        /* ===== Fireworks Container ===== */
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+        }
+
+        /* ===== Card Popup Overlay ===== */
+        .card-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        /* ===== Card Container ===== */
+        .card-popup {
+            background: #fff6fc;
+            border-radius: 20px;
+            max-width: 420px;
+            width: 100%;
+            padding: 18px 18px 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Card Image */
+        .card-img {
+            width: 100%;
+            border-radius: 16px;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #ffd6ec;
+        }
+
+        /* Card Caption */
+        .card-text {
+            font-size: 0.96rem;
+            color: #5b3445;
+            line-height: 1.55;
+        }
+
+        /* Button Container */
+        .card-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        /* Close Button */
+        .btn-close {
+            background: transparent;
+            color: #ff4b8b;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 999px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .btn-close:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Show Wish Button */
+        .btn-wish {
+            background: #ff8ac5;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 999px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(255, 138, 197, 0.55);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-wish:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 22px rgba(255, 138, 197, 0.65);
+        }
+
+        /* Main Birthday Wish Button (below gifts) */
+        .btn-show-wish-main {
+            margin: 30px auto 0;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff4b8b 0%, #ff9acb 100%);
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 26px rgba(255, 75, 139, 0.45);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            animation: fadeInUp 0.6s ease-out 2.5s backwards;
+        }
+
+        .btn-show-wish-main:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 14px 32px rgba(255, 75, 139, 0.6);
+        }
+
+        .btn-show-wish-main:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Birthday Wish Container ===== */
+        .wish-container {
+            margin-top: 20px;
+            padding: 16px 18px;
+            background: #ffe4f4;
+            border: 2px dashed #ff89c2;
+            border-radius: 18px;
+            display: none;
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        .wish-container h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ff3c84;
+            margin-bottom: 8px;
+        }
+
+        .wish-container p {
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #5b3445;
+        }
+
+        /* Typewriter Effect - Shows full text with fade-in */
+        .typewriter {
+            opacity: 0;
+            animation: fadeInTyping 2s ease-out forwards;
+        }
+
+        @keyframes fadeInTyping {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slide Down Animation */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Music Toggle Button ===== */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff4b8b 0%, #ff9acb 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 75, 139, 0.4);
+            z-index: 30;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 75, 139, 0.6);
+        }
+
+        .music-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== Responsive Design ===== */
+
+        /* Extra Small Mobile (320px - 375px) */
+        @media (max-width: 375px) {
+            #page1 h1 {
+                font-size: 1.8rem;
+            }
+
+            #page1 p {
+                font-size: 0.9rem;
+            }
+
+            #page1 button {
+                padding: 10px 24px;
+                font-size: 0.95rem;
+            }
+
+            #page2 h2 {
+                font-size: 1.5rem;
+            }
+
+            #page2 .subtext {
+                font-size: 0.9rem;
+            }
+
+            .gifts-wrapper {
+                max-width: 300px;
+                gap: 12px;
+            }
+
+            .btn-show-wish-main {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .card-popup {
+                padding: 14px;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .wish-container {
+                padding: 14px 16px;
+            }
+
+            .wish-container h3 {
+                font-size: 1rem;
+            }
+
+            .wish-container p {
+                font-size: 0.88rem;
+            }
+
+            .music-toggle {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Small Mobile (376px - 480px) */
+        @media (min-width: 376px) and (max-width: 480px) {
+            .gifts-wrapper {
+                max-width: 350px;
+                gap: 14px;
+            }
+        }
+
+        /* Large Mobile / Small Tablet (481px - 699px) */
+        @media (min-width: 481px) and (max-width: 699px) {
+            #page1 h1 {
+                font-size: 2.2rem;
+            }
+
+            #page2 h2 {
+                font-size: 1.8rem;
+            }
+
+            .gifts-wrapper {
+                max-width: 420px;
+                gap: 18px;
+            }
+
+            .btn-show-wish-main {
+                font-size: 1.15rem;
+            }
+        }
+
+        /* Tablet and Small Laptop (700px - 1024px) */
+        @media (min-width: 700px) {
+
+            #page1,
+            #page2 {
+                padding: 34px 40px 36px;
+            }
+
+            #page1 h1 {
+                font-size: 2.5rem;
+            }
+
+            #page2 h2 {
+                font-size: 2rem;
+            }
+
+            .gifts-wrapper {
+                max-width: 550px;
+                gap: 20px;
+            }
+
+            .btn-show-wish-main {
+                padding: 16px 50px;
+                font-size: 1.2rem;
+            }
+
+            .wish-container p {
+                font-size: 1rem;
+            }
+
+            .card-popup {
+                max-width: 480px;
+            }
+
+            .music-toggle {
+                width: 55px;
+                height: 55px;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+
+        /* Large Laptop / Desktop (1025px+) */
+        @media (min-width: 1025px) {
+            #page1 {
+                padding: 50px 40px;
+            }
+
+            #page2 {
+                padding: 40px 40px 50px;
+            }
+
+            #page1 h1 {
+                font-size: 3rem;
+            }
+
+            #page1 p {
+                font-size: 1.1rem;
+                max-width: 500px;
+            }
+
+            #page1 button {
+                padding: 14px 36px;
+                font-size: 1.1rem;
+            }
+
+            #page2 h2 {
+                font-size: 2.2rem;
+            }
+
+            #page2 .subtext {
+                font-size: 1.05rem;
+            }
+
+            .gifts-wrapper {
+                max-width: 600px;
+                gap: 24px;
+            }
+
+            .btn-show-wish-main {
+                padding: 18px 60px;
+                font-size: 1.25rem;
+                margin-top: 40px;
+            }
+
+            .wish-container {
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 20px 24px;
+            }
+
+            .wish-container h3 {
+                font-size: 1.3rem;
+            }
+
+            .wish-container p {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+
+            .card-popup {
+                max-width: 520px;
+                padding: 24px;
+            }
+
+            .card-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Very Large Screens (1440px+) */
+        @media (min-width: 1440px) {
+            #page1 h1 {
+                font-size: 3.5rem;
+            }
+
+            #page2 h2 {
+                font-size: 2.5rem;
+            }
+
+            .gifts-wrapper {
+                max-width: 650px;
+                gap: 28px;
+            }
+        }
+
+        /* Landscape Mobile Optimization */
+        @media (max-height: 600px) and (orientation: landscape) {
+            #page1 {
+                min-height: 80vh;
+                padding: 20px 18px;
+            }
+
+            #page2 {
+                padding: 20px 18px;
+            }
+
+            #page1 h1 {
+                font-size: 1.8rem;
+            }
+
+            #page1 p {
+                font-size: 0.9rem;
+            }
+
+            .gifts-wrapper {
+                margin-top: 15px;
+            }
+
+            .music-toggle {
+                width: 40px;
+                height: 40px;
+                bottom: 10px;
+                right: 10px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="aud.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button class="music-toggle hidden" id="musicToggle">
+        <span id="musicIcon">🔊</span>
+    </button>
+
+    <!-- Page 1: Landing Page -->
+    <div id="page1">
+        <h1>A little surprise for you 💗</h1>
+        <p>I made something special for your birthday. Click the button and unwrap your surprises one by one.</p>
+        <button id="openBtn">Open your surprise</button>
+    </div>
+
+    <!-- Page 2: Gift Boxes Page -->
+    <div id="page2" class="hidden">
+        <h2>Happy Birthday! 🎁✨</h2>
+        <p class="subtext">Tap each gift box to open it and see what's inside.</p>
+
+        <div class="gifts-wrapper" id="giftsWrapper"></div>
+
+        <!-- Show Birthday Wish Button -->
+        <button class="btn-show-wish-main hidden" id="btnShowWishMain">
+            ✨ Show Birthday Wish ✨
+        </button>
+
+        <div class="wish-container" id="wishContainer">
+            <h3>For your birthday 💌</h3>
+            <p class="typewriter" id="wishText"></p>
+        </div>
+    </div>
+
+    <!-- Card Popup Overlay -->
+    <div class="card-overlay hidden" id="cardOverlay">
+        <div class="card-popup" id="cardPopup">
+            <img class="card-img" id="cardImg" src="" alt="Memory">
+            <p class="card-text" id="cardText"></p>
+            <div class="card-buttons">
+                <button class="btn-close" id="btnClose">close ✿</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Gift Data =====
+        const giftData = [
+            {
+                img: "img1.jpg",
+                text: "Your smile is literally my favourite notification of the day."
+            },
+            {
+                img: "img2.jpg",
+                text: "You make even boring days feel a little bit cute and chaotic."
+            },
+            {
+                img: "img3.jpg",
+                text: "Thank you for being the kind of person who makes everything feel warmer."
+            },
+            {
+                img: "img4.jpg",
+                text: "You're not just special to me — you're the kind of magic I didn't know I needed."
+            },
+            {
+                img: "img5.jpg",
+                text: "Every moment with you feels like a little piece of magic I want to keep forever."
+            },
+            {
+                img: "img6.jpg",
+                text: "You have this way of making ordinary days feel extraordinary just by being you."
+            },
+            {
+                img: "img7.jpg",
+                text: "Thank you for all the laughs, the memories, and the moments that make life beautiful."
+            },
+            {
+                img: "img8.jpg",
+                text: "You deserve all the happiness in the world, and I'm so lucky to celebrate you today."
+            },
+            {
+                img: "img9.jpg",
+                text: "Here's to another year of you being absolutely wonderful. Happy Birthday! 🎂💕"
+            }
+        ];
+
+        const birthdayWishText = `Happy birthday! 🎂✨
+You deserve all the happiness, laughter, and love this world has in store. 💕
+Thanks for standing by me on my worst days and celebrating my best ones like they're your own 💕
+May your life be filled with endless smiles, crazy memories, success, and all the happiness you really deserve and so many moments that remind you how special you are.
+I am always thankful for having you in my life & Always here for you 💖`;
+
+        // ===== DOM Elements =====
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const openBtn = document.getElementById('openBtn');
+        const giftsWrapper = document.getElementById('giftsWrapper');
+        const cardOverlay = document.getElementById('cardOverlay');
+        const cardPopup = document.getElementById('cardPopup');
+        const cardImg = document.getElementById('cardImg');
+        const cardText = document.getElementById('cardText');
+        const btnClose = document.getElementById('btnClose');
+        const btnShowWishMain = document.getElementById('btnShowWishMain');
+        const wishContainer = document.getElementById('wishContainer');
+        const wishText = document.getElementById('wishText');
+        const fireworksContainer = document.getElementById('fireworksContainer');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+
+        // Music state
+        let isMusicPlaying = false;
+
+        // ===== Music Control =====
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicIcon.textContent = '🔇';
+                isMusicPlaying = false;
+            } else {
+                bgMusic.play().catch(e => console.log('Audio play failed:', e));
+                musicIcon.textContent = '🔊';
+                isMusicPlaying = true;
+            }
+        }
+
+        musicToggle.addEventListener('click', toggleMusic);
+
+        // ===== Fireworks Function =====
+        function createFirework(x, y) {
+            const colors = ['#ff3c84', '#ff4b8b', '#ff8ac5', '#ffd700', '#ff9acb'];
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 50 + Math.random() * 50;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+
+                fireworksContainer.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        function launchFireworks() {
+            const count = 15;
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * (window.innerHeight * 0.6);
+                    createFirework(x, y);
+                }, i * 200);
+            }
+        }
+
+        // ===== Page Transition =====
+        openBtn.addEventListener('click', () => {
+            page1.classList.add('hidden');
+            page2.classList.remove('hidden');
+            musicToggle.classList.remove('hidden');
+
+            // Start music
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicIcon.textContent = '🔊';
+            }).catch(e => {
+                console.log('Audio autoplay blocked:', e);
+                // Music will need user interaction to play
+            });
+
+            createGiftBoxes();
+            launchFireworks();
+        });
+
+        // ===== Create Gift Boxes =====
+        function createGiftBoxes() {
+            giftData.forEach((gift, index) => {
+                const giftBox = document.createElement('div');
+                giftBox.className = 'gift-box';
+                giftBox.setAttribute('data-index', index);
+
+                giftBox.innerHTML = `
+                    <div class="box-base">
+                        <div class="ribbon-v"></div>
+                        <div class="ribbon-h"></div>
+                    </div>
+                    <div class="bow">
+                        <div class="bow-heart"></div>
+                    </div>
+                `;
+
+                giftsWrapper.appendChild(giftBox);
+
+                // Staggered animation
+                setTimeout(() => {
+                    giftBox.classList.add('show');
+                }, index * 200);
+
+                // Click event
+                giftBox.addEventListener('click', () => openCard(index));
+            });
+
+            // Show birthday wish button after all gifts are loaded
+            setTimeout(() => {
+                btnShowWishMain.classList.remove('hidden');
+            }, giftData.length * 200 + 500);
+        }
+
+        // ===== Open Card =====
+        function openCard(index) {
+            const gift = giftData[index];
+            cardImg.src = gift.img;
+            cardText.textContent = gift.text;
+            cardOverlay.classList.remove('hidden');
+        }
+
+        // ===== Close Card =====
+        function closeCard() {
+            cardOverlay.classList.add('hidden');
+        }
+
+        btnClose.addEventListener('click', closeCard);
+
+        // Click outside card to close
+        cardOverlay.addEventListener('click', (e) => {
+            if (e.target === cardOverlay) {
+                closeCard();
+            }
+        });
+
+        // ===== Show Birthday Wish with Typewriter =====
+        btnShowWishMain.addEventListener('click', () => {
+            wishContainer.style.display = 'block';
+            wishText.textContent = birthdayWishText;
+
+            // Smooth scroll to wish container
+            setTimeout(() => {
+                wishContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        });
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleMove {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(var(--tx), var(--ty)) scale(0);
+                    opacity: 0;
+                }
+            }
+            .firework-particle {
+                animation: particleMove 1s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== Developer Tools Protection =====
+        // Disable Right-Click
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', (e) => {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'Shift')) ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J'))
+            ) {
+                e.preventDefault();
+                alert("Developer tools are disabled!");
+            }
+        });
+
+        // Additional Check for DevTools Detection
+        (function detectDevTools() {
+            const devtools = /./;
+            devtools.toString = function () { return 'DevTools Detected'; };
+            console.log('%c', devtools);
+        })();
+    </script>
+</body>
+
+</html>
